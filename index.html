@@ -18,34 +18,44 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="progress" id="progress">
+  <div class="progress">
     <div class="progress__inner">
-      <span class="progress__label"><span id="count">0</span> of <span id="total">0</span> tried</span>
-      <div class="progress__track" aria-hidden="true"><div class="progress__fill" id="fill"></div></div>
+      <span class="progress__label"><span class="js-count">0</span> of <span class="js-total">0</span> tried</span>
+      <div class="progress__track" aria-hidden="true"><div class="progress__fill js-fill"></div></div>
     </div>
   </div>
 
   <main class="page">
-    <header class="hero">
-      <p class="eyebrow">Vancouver &amp; Richmond</p>
-      <h1>Where to eat,<br><em>and what to order.</em></h1>
-      <p class="lede">A short list of places I keep going back to. Tick each one off once you've been.</p>
-    </header>
+    <aside class="side">
+      <header class="hero">
+        <p class="eyebrow">Vancouver &amp; Richmond</p>
+        <h1>Where to eat,<br><em>and what to order.</em></h1>
+        <p class="lede">A short list of places I keep going back to. Tick each one off once you've been.</p>
+      </header>
 
-    <nav class="filters" aria-label="Filter list">
-      <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
-      <button class="filter" data-filter="todo" aria-pressed="false">To try</button>
-      <button class="filter" data-filter="done" aria-pressed="false">Tried</button>
-    </nav>
+      <div class="tally">
+        <p class="tally__num"><span class="js-count">0</span><span class="tally__of">/<span class="js-total">0</span></span></p>
+        <p class="tally__label">places tried</p>
+        <div class="progress__track" aria-hidden="true"><div class="progress__fill js-fill"></div></div>
+      </div>
 
-    <div id="list"></div>
+      <nav class="filters" aria-label="Filter list">
+        <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="todo" aria-pressed="false">To try</button>
+        <button class="filter" data-filter="done" aria-pressed="false">Tried</button>
+      </nav>
+    </aside>
 
-    <p class="empty" id="empty" hidden></p>
+    <div class="content">
+      <div id="list"></div>
 
-    <footer class="footer">
-      <p class="footer__note" id="done-note" hidden>Every spot, done. Vancouver approved.</p>
-      <button class="reset" id="reset" type="button">Reset list</button>
-    </footer>
+      <p class="empty" id="empty" hidden></p>
+
+      <footer class="footer">
+        <p class="footer__note" id="done-note" hidden>Every spot, done. Vancouver approved.</p>
+        <button class="reset" id="reset" type="button">Reset list</button>
+      </footer>
+    </div>
   </main>
 
   <script src="app.js"></script>

@@ -125,9 +125,9 @@ let filter = "all";
 
 const listEl = document.getElementById("list");
 const emptyEl = document.getElementById("empty");
-const countEl = document.getElementById("count");
-const totalEl = document.getElementById("total");
-const fillEl = document.getElementById("fill");
+const countEls = document.querySelectorAll(".js-count");
+const totalEls = document.querySelectorAll(".js-total");
+const fillEls = document.querySelectorAll(".js-fill");
 const doneNoteEl = document.getElementById("done-note");
 
 const escape = (str) =>
@@ -200,7 +200,7 @@ const render = () => {
           <h2>${escape(section.title)}</h2>
           <span class="section__count">${doneInSection}/${section.items.length}</span>
         </div>
-        ${cards}
+        <div class="section__grid">${cards}</div>
       </section>`;
   }).join("");
 
@@ -211,9 +211,9 @@ const render = () => {
 
 const updateProgress = () => {
   const done = ALL_ITEMS.filter((i) => tried.has(i.id)).length;
-  countEl.textContent = done;
-  totalEl.textContent = ALL_ITEMS.length;
-  fillEl.style.width = `${(done / ALL_ITEMS.length) * 100}%`;
+  countEls.forEach((el) => (el.textContent = done));
+  totalEls.forEach((el) => (el.textContent = ALL_ITEMS.length));
+  fillEls.forEach((el) => (el.style.width = `${(done / ALL_ITEMS.length) * 100}%`));
   doneNoteEl.hidden = done !== ALL_ITEMS.length;
 };
 
