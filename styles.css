@@ -332,6 +332,12 @@ h1 em {
   flex: none;
 }
 
+.maps-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .maps {
   display: inline-flex;
   align-items: center;

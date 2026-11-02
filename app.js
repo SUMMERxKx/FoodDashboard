@@ -133,8 +133,10 @@ const doneNoteEl = document.getElementById("done-note");
 const escape = (str) =>
   str.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
-const mapsUrl = (query) =>
+const googleMapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+const appleMapsUrl = (query) => `https://maps.apple.com/?q=${encodeURIComponent(query)}`;
 
 const pinIcon = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-8a4.5 4.5 0 1 0-9 0c0 3.8 4.5 8 4.5 8z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6.5" r="1.6" fill="currentColor"/></svg>`;
 const arrowIcon = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -160,9 +162,14 @@ const renderItem = (item, index) => {
         ${item.note ? `<p class="card__note">${escape(item.note)}</p>` : ""}
         <div class="card__foot">
           <span class="card__place">${pinIcon}<span>${escape(item.area)}</span></span>
-          <a class="maps" href="${mapsUrl(item.maps)}" target="_blank" rel="noopener">
-            Google Maps ${arrowIcon}
-          </a>
+          <div class="maps-row">
+            <a class="maps" href="${googleMapsUrl(item.maps)}" target="_blank" rel="noopener">
+              Google Maps ${arrowIcon}
+            </a>
+            <a class="maps" href="${appleMapsUrl(item.maps)}" target="_blank" rel="noopener">
+              Apple Maps ${arrowIcon}
+            </a>
+          </div>
         </div>
       </div>
       <button class="check" type="button" aria-pressed="${isDone}" aria-label="Mark ${escape(item.name)} as tried">
