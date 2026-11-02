@@ -304,17 +304,26 @@ h1 em {
   color: var(--accent);
 }
 
+.card__note {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.card__foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 .card__place {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 12px;
-  padding: 4px 0;
   font-size: 13px;
   color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
 }
 
 .card__place svg {
@@ -323,10 +332,39 @@ h1 em {
   flex: none;
 }
 
-.card__place:hover,
-.card__place:focus-visible {
+.maps {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
   color: var(--ink);
-  border-bottom-color: var(--line);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.maps svg {
+  width: 13px;
+  height: 13px;
+  color: var(--accent);
+}
+
+.maps:hover,
+.maps:focus-visible {
+  border-color: var(--faint);
+}
+
+.maps:active {
+  background: var(--line);
+}
+
+.maps:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Check button */
@@ -387,7 +425,8 @@ h1 em {
 }
 
 .card.is-done .card__order,
-.card.is-done .card__warn {
+.card.is-done .card__warn,
+.card.is-done .card__note {
   opacity: 0.6;
 }
 

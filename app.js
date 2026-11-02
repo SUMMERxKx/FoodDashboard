@@ -68,9 +68,10 @@ const SECTIONS = [
       {
         id: "slo",
         name: "Slo Coffee",
-        area: "Fraser St, plus other locations",
+        area: "609 Granville St, Downtown",
         order: "Pistachio matcha latte or the Okinawa brown sugar latte.",
-        maps: "Slo Coffee Fraser Street Vancouver",
+        note: "Go to the downtown one, inside Pacific Centre by Granville Station.",
+        maps: "Slo Coffee 609 Granville St Vancouver",
       },
       {
         id: "bake49",
@@ -136,6 +137,7 @@ const mapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 const pinIcon = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-8a4.5 4.5 0 1 0-9 0c0 3.8 4.5 8 4.5 8z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6.5" r="1.6" fill="currentColor"/></svg>`;
+const arrowIcon = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const checkIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 const renderItem = (item, index) => {
@@ -155,9 +157,13 @@ const renderItem = (item, index) => {
         </h3>
         <p class="card__order"><span class="card__label">Order</span>${escape(item.order)}</p>
         ${item.warn ? `<p class="card__warn">${escape(item.warn)}</p>` : ""}
-        <a class="card__place" href="${mapsUrl(item.maps)}" target="_blank" rel="noopener">
-          ${pinIcon}<span>${escape(item.area)}</span>
-        </a>
+        ${item.note ? `<p class="card__note">${escape(item.note)}</p>` : ""}
+        <div class="card__foot">
+          <span class="card__place">${pinIcon}<span>${escape(item.area)}</span></span>
+          <a class="maps" href="${mapsUrl(item.maps)}" target="_blank" rel="noopener">
+            Google Maps ${arrowIcon}
+          </a>
+        </div>
       </div>
       <button class="check" type="button" aria-pressed="${isDone}" aria-label="Mark ${escape(item.name)} as tried">
         ${checkIcon}
