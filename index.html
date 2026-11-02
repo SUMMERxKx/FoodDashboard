@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Where to Eat in Vancouver</title>
+  <meta name="description" content="A short, personal list of places to eat in Vancouver and Richmond.">
+  <meta property="og:title" content="Where to Eat in Vancouver">
+  <meta property="og:description" content="A short, personal list. Tick them off as you go.">
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110e" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Vancouver">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress" id="progress">
+    <div class="progress__inner">
+      <span class="progress__label"><span id="count">0</span> of <span id="total">0</span> tried</span>
+      <div class="progress__track" aria-hidden="true"><div class="progress__fill" id="fill"></div></div>
+    </div>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Vancouver &amp; Richmond</p>
+      <h1>Where to eat,<br><em>and what to order.</em></h1>
+      <p class="lede">A short list of places I keep going back to. Order what's written, and tick each one off once you've been.</p>
+    </header>
+
+    <nav class="filters" aria-label="Filter list">
+      <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter" data-filter="todo" aria-pressed="false">To try</button>
+      <button class="filter" data-filter="done" aria-pressed="false">Tried</button>
+    </nav>
+
+    <div id="list"></div>
+
+    <p class="empty" id="empty" hidden></p>
+
+    <footer class="footer">
+      <p class="footer__note" id="done-note" hidden>Every spot, done. Vancouver approved.</p>
+      <button class="reset" id="reset" type="button">Reset list</button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
